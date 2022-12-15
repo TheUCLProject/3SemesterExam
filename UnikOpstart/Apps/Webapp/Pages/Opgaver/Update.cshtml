@@ -1,0 +1,47 @@
+﻿@page
+@model Webapp.Pages.Opgaver.UpdateModel
+@{
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div class="form-group">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                
+                <label asp-for="UpdateViewModel.Title"></label>
+                <input asp-for="UpdateViewModel.Title" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdateViewModel.Process_Kategori"></label>
+                <select asp-for="UpdateViewModel.Process_Kategori" class="form-select" aria-required="true">
+                    <option selected>...</option>
+                    <option value="Teknik">Teknik</option>
+                    <option value="Konvertering">Konvertering</option>
+                    <option value="Konsultation">Konsultation</option>
+                </select>
+
+                <span asp-validation-for="UpdateViewModel.Process_Kategori" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdateViewModel.KompetenceId">Kompetence Behov</label>
+                <select asp-for="UpdateViewModel.KompetenceId" class="form-control" id="asd" aria-required="true">
+                    <option selected>...</option>
+                    @foreach (var kompetence in Model.KompetenceIndexViewModels)
+                    {
+                        <option value="@kompetence.Id">@kompetence.Egenskab</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdateViewModel.TimeEstimat">Tidsestimat (i dage)</label>
+                <input asp-for="UpdateViewModel.TimeEstimat" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdateViewModel.Kommentar"></label>
+                <input asp-for="UpdateViewModel.Kommentar" class="form-control" />
+            </div>
+            <button class="btn btn-success" type="submit" class="btn btn-default" asp-route-id="@Model._opgId">Rediger</button>
+        </form>
+    </div>
+</div>

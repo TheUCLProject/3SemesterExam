@@ -1,0 +1,89 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+
+  margin: 100px 0;
+}
+
+header li {
+  padding: 0 1rem;
+}
+
+[class="infobox"] {
+  height: 10rem;
+  width: 15.8rem;
+  margin: 1rem;
+}
+
+.unik-progress {
+  background-color: rgb(54, 0, 102)
+}
+
+.unik-progress-done {
+  background-color: rgb(54, 0, 102)
+}
+
+.unik-progress-inprogress {
+  background-color: rgb(54, 0, 102)
+}
+
+.unik-progress-planning {
+  background-color: rgb(54, 0, 102)
+}
+
+.progress-button {
+  color: #fff;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgb(54, 0, 102);
+  border-radius: 1.5rem !important;
+  box-shadow: 8px 10px 10px 1px rgba(0, 0, 0, 0.5);
+  width: 16rem;
+  height: 5rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.progress-button:hover {
+  background-color: rgb(51, 0, 255);
+  border: 2px solid #fff;
+}
+
+a.nav-title {
+  font-weight: bold;
+}
+
+a.nav-title:hover {
+  color: white !important;
+}
+
+.card-header {
+  border: 2px solid rgb(210, 210, 210);
+  border-radius: 10px !important;
+  box-shadow: 8px 10px 10px 1px rgba(0, 0, 0, 0.5);
+}
+
+.card-header:hover {
+  background-color: rgb(51, 0, 255);
+  border: 2px solid #fff;
+}
+
+.unik-logo {
+  display: inline-block;
+  margin-right: 2rem;
+}

@@ -1,0 +1,90 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@* ------------------ Velkomst tekst Sektion ------------------ *@
+
+<div class="text-center" style="padding-top: 8rem;">
+    <h1 class="display-4"><img src="~/images/unik/logo.svg" alt="Unik" style="width: 15%;" />Opstart</h1>
+    <p>Overblik over i gang sættelse af dit nye Bolig Administrations System. </p>
+</div>
+
+@*---------- Projekt info Boks ------ *@
+<div class="infobox">
+    <h3><strong>Projekt info:</strong></h3>
+    <p>Projekt navn: XXX</p>
+    <p>Projekt start dato: XXX</p>
+    <p>Kontakt person: XXX</p>
+</div>
+
+
+@* ------------------ Main Progress Button Sektion ------------------ *@
+
+<div class="container" style="margin-bottom: 5rem;">
+    <div class="row">
+        <div class="col">
+            <div class="unik-progress-done progress-button">
+                Start
+            </div>
+        </div>
+        <div class="col">
+            <div class="unik-progress-inprogress progress-button">
+                Teknik
+            </div>
+        </div>
+        <div class="col">
+            <div class="unik-progress-planning progress-button">
+                Konvertering
+            </div>
+        </div>
+        <div class="col">
+            <div class="unik-progress progress-button">
+                Konsultation
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* ------------------ Ansvarlige Sektion ------------------ *@
+
+@* OBS: Tilknyttet Unik Medarbejder skal findes via viewmodel for opgaver under projektet.
+    Lige nu er du selvfølgelig bare hardcodet ind som mock-ups. *@
+
+<div class="container">
+    <h3><strong>Tilknyttet Unik Medarbejderer:</strong></h3>
+    <div class="row" style="margin-top: 1rem;">
+        <div class="col-4">
+            <div class="card-md">
+                <div class="card-header">
+                    <h4><b>Salgs Ansvarlig:</b></h4>
+                    <h5>John Doe</h5>
+                    <p>Tlf: 12345678</p>
+                    <p>Email: john@unik.dk</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card-md">
+                <div class="card-header">
+                    <h4><b>Teknik Ansvarlig:</b></h4>
+                    <h5>Mette Jensen</h5>
+                    <p>Tlf: 12345678</pe=>
+                    <p>Email: mette@unik.dk</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card-md">
+                <div class="card-header">
+                    <h4><b>Konverterings Ansvarlig:</b></h4>
+                    <h5>Jan Henriksen</h5>
+                    <p>Tlf: 12345678</p>
+                    <p>Email: jan@unik.dk</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

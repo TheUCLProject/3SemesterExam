@@ -1,0 +1,40 @@
+﻿@page
+@model Webapp.Pages.Kompetencer.IndexModel
+@{
+}
+
+<h2>Kompetencer</h2>
+<span class=""></span>
+<p>Oversigt Kompetencer</p>
+
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Egenskab</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.IndexViewModel.Any())
+            {
+                foreach (var kompetence in Model.IndexViewModel)
+                {
+                    <tr>
+                        <td>@kompetence.Egenskab</td>
+                        <td>
+                            <button type="delete" class="btn btn-danger" asp-page-handler="delete" asp-route-id="@kompetence.Id">Slet</button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="2">Ingen Kompetencer fundet!</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-success" asp-page="Create" asp-route-id="@Model._medarbejderId">Opret/Tilføj ny Kompetence</a>
+</form>

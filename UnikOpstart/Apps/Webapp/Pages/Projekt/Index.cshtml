@@ -1,0 +1,47 @@
+﻿@page
+@model Webapp.Pages.Projekt.IndexModel
+@{
+}
+
+<h2>Projekter</h2>
+<span class=""></span>
+<p>Oversigt over alle igangværende projekter</p>
+
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Navn</th>
+                <th>Kontakt Person</th>
+                <th>Aktiv Process</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.IndexViewModel.Any())
+            {
+                foreach (var projekt in Model.IndexViewModel)
+                {
+                    <tr>
+                        <td>@projekt.Name</td>
+                        <td>@projekt.ContactPerson</td>
+                        <td>@projekt.ActiveProcess</td>
+                        <td>
+                            <a class="btn btn-warning" asp-page="/Projekt/Update" asp-route-id="@projekt.Id">Redidgere</a>
+                            <button type="delete" class="btn btn-danger" asp-page-handler="delete" asp-route-id="@projekt.Id">Slet</button>
+                            <a class="btn btn-primary" asp-page="/Opgaver/Index" asp-route-id="@projekt.Id">Vis Opgaver</a>
+                            <a class="btn btn-primary" asp-page="/Medarbejder/Sælger/Index" asp-route-projektId="@projekt.Id" asp-route-kundeId="@Model._kundeId">Process Opsætning</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3">Ingen Projekter fundet!</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-success" asp-page="Create" asp-route-id="@Model._kundeId">Opret nyt projekt</a>
+</form>

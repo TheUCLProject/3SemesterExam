@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <UserSecretsId>52b41dac-cbdb-4a66-a08f-48c1b86d72d7</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Database\SqlMigrations\SqlMigrations.csproj" />
+    <ProjectReference Include="..\Database\SqlContext\SqlContext.csproj" />
+    <ProjectReference Include="..\Database\SqlMigrations\SqlMigrations.csproj" />
+    <ProjectReference Include="..\Features\Application\MedarbejderKompetencer.Application.csproj" />
+    <ProjectReference Include="..\Features\Domain\MedarbejderKompetencer.Domain.csproj" />
+    <ProjectReference Include="..\Features\Infrastructure\MedarbejderKompetencer.Infrastructure.csproj" />
+    <ProjectReference Include="..\MedarbejderKompetencer.Crosscut\MedarbejderKompetencer.Crosscut.csproj" />
+  </ItemGroup>
+
+</Project>

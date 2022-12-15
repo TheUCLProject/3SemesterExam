@@ -1,0 +1,32 @@
+﻿@page
+@model Webapp.Pages.Medarbejder.EditModel
+@{
+}
+<h2>Redigere UNIK Medarbejder</h2>
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="UpdateViewModel.Id" class="form-control" />
+            <div class="form-group">
+                <label asp-for="UpdateViewModel.Name"></label>
+                <input asp-for="UpdateViewModel.Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdateViewModel.ProcessRole"></label>
+                <input asp-for="UpdateViewModel.ProcessRole" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdateViewModel.Email"></label>
+                <input asp-for="UpdateViewModel.Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdateViewModel.PhoneNr"></label>
+                <input asp-for="UpdateViewModel.PhoneNr" class="form-control" />
+            </div>
+            <button class="btn btn-success" type="submit" class="btn btn-default">Opdater</button>
+        </form>
+    </div>
+</div>

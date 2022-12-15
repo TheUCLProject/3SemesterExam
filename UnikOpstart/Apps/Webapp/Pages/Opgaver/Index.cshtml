@@ -1,0 +1,41 @@
+﻿@page
+@model Webapp.Pages.Opgaver.IndexModel
+@{
+}
+
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Process Kategori</th>
+                <th>Tidsestimat</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.IndexViewModel.Any())
+            {
+                foreach (var opgaver in Model.IndexViewModel)
+                {
+                    <tr>
+                        <td>@opgaver.Title</td>
+                        <td>@opgaver.Process_Kategori</td>
+                        <td>@opgaver.TimeEstimat</td>
+                        <td>
+                            <button class="btn btn-danger" asp-page-handler="delete" asp-route-id="@opgaver.Id" asp-route-projektId="@Model._projektId">Slet</button>
+                            <button class="btn btn-warning" asp-page="Update" asp-route-id="@opgaver.Id">Rediger</button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4">Ingen Opgaver fundet!</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
+<a class="btn btn-success" asp-page="Create" asp-route-id="@Model._projektId">Opret nyt opgaver</a>

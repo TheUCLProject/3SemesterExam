@@ -1,0 +1,24 @@
+﻿@page
+@model Webapp.Pages.Kunde.UpdateModel
+@{
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="UpdateViewModel.Name"></label>
+                <input asp-for="UpdateViewModel.Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdateViewModel.Email"></label>
+                <input asp-for="UpdateViewModel.Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdateViewModel.TlfNr"></label>
+                <input asp-for="UpdateViewModel.TlfNr" class="form-control" />
+            </div>
+            <button class="btn btn-success" type="submit" class="btn btn-default">Rediger</button>
+        </form>
+    </div>
+</div>

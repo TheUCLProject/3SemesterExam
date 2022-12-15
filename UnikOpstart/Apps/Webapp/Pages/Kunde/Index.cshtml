@@ -1,0 +1,39 @@
+﻿@page
+@model Webapp.Pages.Kunde.IndexModel
+@{
+}
+<h1>Kunder</h1>
+<p>Oversigt over alle kunder</p>
+
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Navn</th>
+                <th>Email</th>
+                <th>Telefonnummer</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.IndexViewModel.Any())
+            {
+                foreach (var kunde in Model.IndexViewModel)
+                {
+                    <tr>
+                        <td>@kunde.Name</td>
+                        <td>@kunde.Email</td>
+                        <td>@kunde.TlfNr</td>
+                        <td>
+                            <button class="btn btn-danger" asp-page-handler="delete" asp-route-id="@kunde.Id">Slet</button>
+                            <a class="btn btn-warning" asp-page="Update" asp-route-id="@kunde.Id">Rediger</a>
+                            <a class="btn btn-info" asp-page="/Projekt/Index" asp-route-id="@kunde.Id">Vis Projekter</a>
+                            
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</form>
+<!----<a class="btn btn-success" asp-page="Create">Opret nyt kunde</a>  KUNDE SKAL OPRETTES GENNEM IDENTITY-->

@@ -1,0 +1,166 @@
+﻿@page
+@model Webapp.Pages.Medarbejder.Sælger.IndexModel
+@{
+}
+<h2>Projekt Opsætning</h2>
+<p>Oversigt over opsætning af hver process del i opstart projektet.</p>
+
+<h3>Projekt Oversigt</h3>
+<ul>
+    <li>@Model.ProjektViewModel.Name</li>
+    <li>@Model.ProjektViewModel.ContactPerson</li>
+    <li>@Model.KundeViewModel.Name</li>
+    <li>@Model.KundeViewModel.TlfNr</li>
+    <li>@Model.KundeViewModel.Email</li>
+</ul>
+
+<h2>Teknik Fase</h2>
+<label>Angiv ønsket start dato</label>
+<form method="post">
+<table class="table" id="tableplacement" style="margin-top: 25px">
+    <thead>
+        <tr>
+            <th>Opgave</th>
+            <th>Medarbejder</th>
+            <th>Forventet Start Dato</th>
+        </tr>
+    </thead>
+
+    @for (int i = 0; i < Model.OpgaveViewModel.Count(); i++)
+    {
+        if (Model.OpgaveViewModel[i].Process_Kategori == "Teknik" && Model.ProjektViewModel.ActiveProcess == "Opstart")
+        {
+            <tr>
+                <td>@Model.OpgaveViewModel[i].Title</td>
+                <td>
+                    <input type="hidden" asp-for="CreateBookings[i].OpgaveId" class="form-control" value="@Model.OpgaveViewModel [i].Id"/>
+                    <select asp-for="CreateBookings[i].MedarbejderId" class="form-control">
+                    <option value="">Vælg Tekniker</option>
+                    @foreach(var medarbejder in Model.TeknikerForProjektViewModel)
+                    {
+                        if (medarbejder.OpgaveId == Model.OpgaveViewModel[i].Id)
+                        {
+                            <option value="@medarbejder.MedarbejderId">@medarbejder.Navn</option>
+                        }
+                    }
+                    </select>
+                </td>
+            </tr>
+        }
+        else if(Model.ProjektViewModel.ActiveProcess != "Opstart")
+        {
+            <tr>
+                <td>@Model.OpgaveViewModel[i].Title</td>
+                @foreach (var medarbejder in Model.MedarbejderTilknyttetProjektViewModel)
+                {
+                    if (medarbejder.OpgaveId == Model.OpgaveViewModel[i].Id)
+                    {
+                        <td>@medarbejder.Navn</td>
+                    }
+                }
+            </tr>
+        }
+
+        @if(Model.OpgaveViewModel[i].Process_Kategori == "Konvertering" && Model.ProjektViewModel.ActiveProcess == "Teknik")
+        {
+            <h2>Konverterings Fase</h2>
+            <button class="btn btn-info">Find Opsætning</button>
+
+            <table class="table" id="tableplacement" style="margin-top: 25px">
+                <thead>
+                    <tr>
+                        <th>Opgave</th>
+                        <th>Medarbejder</th>
+                        <th>Forventet Start Dato</th>
+                    </tr>
+                </thead>
+
+                    if (Model.OpgaveViewModel[i].Process_Kategori == "Konvertering" && Model.ProjektViewModel.ActiveProcess == "Teknik")
+                    {
+                        <tr>
+                            <td>@Model.OpgaveViewModel[i].Title</td>
+                            <td>
+                                <select asp-for="@Model.CreateBookings[i].MedarbejderId" class="form-control">
+                                <option value="">Vælg Tekniker</option>
+                                @foreach(var medarbejder in Model.TeknikerForProjektViewModel)
+                                {
+                                    if (medarbejder.OpgaveId == Model.OpgaveViewModel[i].Id)
+                                    {
+                                        <option value="@medarbejder.MedarbejderId">@medarbejder.Navn</option>
+                                    }
+                                }
+                                </select>
+                            </td>
+                        </tr>
+                    }
+                
+            </table>
+        }
+        else if (Model.ProjektViewModel.ActiveProcess != "Opstart" && Model.ProjektViewModel.ActiveProcess != "Teknik")
+        {
+            <tr>
+                <td>@Model.OpgaveViewModel[i].Title</td>
+                @foreach (var medarbejder in Model.MedarbejderTilknyttetProjektViewModel)
+                {
+                    if (medarbejder.OpgaveId == Model.OpgaveViewModel[i].Id)
+                    {
+                        <td>@medarbejder.Navn</td>
+                    }
+                }
+            </tr>
+        }
+
+        @if(Model.OpgaveViewModel[i].Process_Kategori == "Konsultation" && Model.ProjektViewModel.ActiveProcess == "Konvertering")
+        {
+            <h2>Konsultation Fase</h2>
+            <button class="btn btn-info">Find Opsætning</button>
+
+            <table class="table" id="tableplacement" style="margin-top: 25px">
+                <thead>
+                    <tr>
+                        <th>Opgave</th>
+                        <th>Medarbejder</th>
+                        <th>Forventet Start Dato</th>
+                    </tr>
+                </thead>
+
+                
+                    if (Model.OpgaveViewModel[i].Process_Kategori == "Konsultation" && Model.ProjektViewModel.ActiveProcess == "Konvertering")
+                    {
+                        <tr>
+                            <td>@Model.OpgaveViewModel[i].Title</td>
+                            <td>
+                                <select asp-for="@Model.CreateBookings[i].MedarbejderId" class="form-control">
+                                <option value="">Vælg Tekniker</option>
+                                @foreach(var medarbejder in Model.TeknikerForProjektViewModel)
+                                {
+                                    if (medarbejder.OpgaveId == Model.OpgaveViewModel[i].Id)
+                                    {
+                                        <option value="@medarbejder.MedarbejderId">@medarbejder.Navn</option>
+                                    }
+                                }
+                                </select>
+                            </td>
+                        </tr>
+                    }
+                
+            </table>
+        }
+        else if (Model.ProjektViewModel.ActiveProcess != "Opstart" && Model.ProjektViewModel.ActiveProcess != "Teknik" && Model.ProjektViewModel.ActiveProcess != "Konvertering")
+        {
+            <tr>
+                <td>@Model.OpgaveViewModel[i].Title</td>
+                @foreach (var medarbejder in Model.MedarbejderTilknyttetProjektViewModel)
+                {
+                    if (medarbejder.OpgaveId == Model.OpgaveViewModel[i].Id)
+                    {
+                        <td>@medarbejder.Navn</td>
+                    }
+                }
+            </tr>
+        }
+    }
+</table>
+<button class="btn btn-success" type="submit" class="btn btn-default">Accepter Opsætning</button>
+</form>
+

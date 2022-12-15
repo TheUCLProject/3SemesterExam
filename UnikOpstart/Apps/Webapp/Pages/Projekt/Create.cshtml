@@ -1,0 +1,23 @@
+﻿@page
+@model Webapp.Pages.Projekt.CreateModel
+@{
+}
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div class="form-group">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="CreateViewModel.Version" class="form-control" />
+
+                <label asp-for="CreateViewModel.Name"></label>
+                <input asp-for="CreateViewModel.Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="CreateViewModel.ContactPerson"></label>
+                <input asp-for="CreateViewModel.ContactPerson" class="form-control" />
+            </div>
+            <button class="btn btn-success" type="submit" class="btn btn-default" asp-route-id="@Model._kundeId">Opret</button>
+        </form>
+    </div>
+</div>

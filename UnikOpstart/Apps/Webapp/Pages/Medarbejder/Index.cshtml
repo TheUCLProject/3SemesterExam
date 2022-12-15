@@ -1,0 +1,43 @@
+﻿@page
+@model Webapp.Pages.Medarbejder.IndexModel
+@{
+}
+
+<h2>UNIK Medarbejder</h2>
+<span class=""></span>
+<p>Oversigt over alle UNIK Medarbejderer involveret i igangsættelser</p>
+
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Navn</th>
+                <th>Process Role</th>
+                <th>Email</th>
+                <th>Tlf. Nr.</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.IndexViewModel.Any())
+            {
+                foreach (var medarbejder in Model.IndexViewModel)
+                {
+                    <tr>
+                        <td>@medarbejder.Name</td>
+                        <td>@medarbejder.ProcessRole</td>
+                        <td>@medarbejder.Email</td>
+                        <td>@medarbejder.PhoneNr</td>
+                        <td>
+                            <button type="edit" class="btn btn-warning" asp-page="/Medarbejder/Update" asp-route-id="@medarbejder.Id">Redigere</button>
+                            <button type="delete" class="btn btn-danger" asp-page-handler="delete" asp-route-id="@medarbejder.Id">Slet</button>
+                            <a class="btn btn-info" asp-page="/Kompetencer/Index" asp-route-id="@medarbejder.Id">Kompetencer</a>
+                            <a class="btn btn-info" asp-page="/Booking/Index" asp-route-id="@medarbejder.Id">Booking</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <!--<a class="btn btn-success" asp-page="Create">Opret ny UNIK Medarbejder</a> OPRETTELSE AF MEDARBEJDER SKAL SKE GENNEM IDENTITY ELLER SWAGGER!--> 
+</form>

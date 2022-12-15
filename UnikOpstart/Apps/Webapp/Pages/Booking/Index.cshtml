@@ -1,0 +1,56 @@
+﻿@page
+@model Webapp.Pages.Booking.IndexModel
+@{
+}
+
+<h2>Bookings</h2>
+<span class=""></span>
+<p>Oversigt over alle Kalender Bookings</p>
+
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Start Dato</th>
+                <th>Slut Dato</th>
+                <th>Kategori</th>
+                <th>Kommentar</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.IndexViewModel.Any())
+            {
+                foreach (var booking in Model.IndexViewModel)
+                {
+                    <tr>
+                        <td>@booking.Title</td>
+                        <td>@booking.StartDato</td>
+                        <td>@booking.SlutDato</td>
+                        @if(@booking.OpgaveId == 0)
+                        {
+                            <td>[...]</td>
+                        }
+                        else
+                        {
+                            <td>Arbejdsopgave</td>
+                        }
+                        <td>@booking.Kommentar</td>
+                        <td>
+                            <a class="btn btn-warning" asp-page="Update" asp-route-id="@booking.Id">Rediger</a>
+                            <button type="delete" class="btn btn-danger" asp-page-handler="delete" asp-route-id="@booking.Id">Slet</button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4">Ingen Bookings fundet!</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-success" asp-page="Create" asp-route-id=@Model._medarbejderId>Opret ny Booking</a>
+</form>
