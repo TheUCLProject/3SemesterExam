@@ -1,0 +1,19 @@
+version: 20.10.17
+
+services:
+  apps:
+    build: ./Apps
+    ports:
+      - "7000:80"
+  booking:
+    build: ./UnikOpstart/Services/Booking
+    ports:
+      - "7300:80"
+  kundeprojekter:
+    build: ./UnikOpstart/Services/KundeProjekter
+    ports:
+      - "7100:80"
+  medarbejderkompetencer:
+    build: ./UnikOpstart/Services/MedarbejderKompetencer
+    ports:
+      - "7200:80"
