@@ -2,7 +2,7 @@ version: 20.10.17
 
 services:
   apps:
-    build: ./Apps
+    build: ./UnikOpstart/Apps
     ports:
       - "7000:80"
   booking:
